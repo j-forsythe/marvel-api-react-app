@@ -28,6 +28,8 @@ export default class Api extends React.Component {
           marvelData: response.data.results,
         });
       }.bind(this));
+
+      this.refs.name.value = '';
     }
 
     componentWillUnmount() {

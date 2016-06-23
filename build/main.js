@@ -20204,15 +20204,15 @@
 	      var marvelUrlBase = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20';
 	      var fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
-	      console.log(fullURL);
 
 	      this.serverRequest = $.get(fullURL, function (response) {
 	        console.log(response);
 	        this.setState({
 	          marvelData: response.data.results
-
 	        });
 	      }.bind(this));
+
+	      this.refs.name.value = '';
 	    }
 	  }, {
 	    key: 'componentWillUnmount',

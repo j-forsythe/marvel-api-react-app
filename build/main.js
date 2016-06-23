@@ -20255,13 +20255,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _modal = __webpack_require__(170);
-
-	var _modal2 = _interopRequireDefault(_modal);
-
 	var _api = __webpack_require__(168);
 
 	var _api2 = _interopRequireDefault(_api);
+
+	var _character = __webpack_require__(170);
+
+	var _character2 = _interopRequireDefault(_character);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -20277,45 +20277,19 @@
 	  function Content() {
 	    _classCallCheck(this, Content);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Content).call(this));
-
-	    _this.state = {
-	      showModal: ''
-	    };
-	    _this.toggleModal = _this.toggleModal.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Content).apply(this, arguments));
 	  }
 
 	  _createClass(Content, [{
-	    key: 'toggleModal',
-	    value: function toggleModal() {
-	      this.setState({ showModal: !this.state.showModal });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this2 = this;
-
+	      var mapMarvelData = this.props.marvelData.map(function (el) {
+	        return _react2.default.createElement(_character2.default, { key: el.id, name: el.name, thumbnail: el.thumbnail, description: el.description, urls: el.urls });
+	      });
 	      return _react2.default.createElement(
-	        'div',
+	        'ul',
 	        null,
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          this.props.marvelData.map(function (el, i) {
-	            return _react2.default.createElement(
-	              'li',
-	              { key: i },
-	              _react2.default.createElement(
-	                'a',
-	                { onClick: _this2.toggleModal },
-	                _react2.default.createElement('img', { src: el.thumbnail.path + '.' + el.thumbnail.extension }),
-	                el.name
-	              )
-	            );
-	          })
-	        ),
-	        this.state.showModal ? _react2.default.createElement(_modal2.default, { dismiss: this.toggleModal }) : ''
+	        mapMarvelData
 	      );
 	    }
 	  }]);
@@ -20331,9 +20305,108 @@
 
 	'use strict';
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _content = __webpack_require__(169);
+
+	var _content2 = _interopRequireDefault(_content);
+
+	var _modal = __webpack_require__(171);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Character = function (_React$Component) {
+	  _inherits(Character, _React$Component);
+
+	  function Character() {
+	    _classCallCheck(this, Character);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Character).call(this));
+
+	    _this.state = {
+	      showModal: ''
+	    };
+
+	    _this.toggleModal = _this.toggleModal.bind(_this);
+	    return _this;
+	  }
+
+	  _createClass(Character, [{
+	    key: 'toggleModal',
+	    value: function toggleModal() {
+	      this.setState({ showModal: !this.state.showModal });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'li',
+	        { onClick: this.toggleModal },
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          this.props.name
+	        ),
+	        _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension }),
+	        this.state.showModal ? _react2.default.createElement(
+	          _modal2.default,
+	          { dismiss: this.toggleModal,
+	            modalClassName: 'character-modal' },
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.name
+	          ),
+	          _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension }),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            !this.props.description ? "no description" : this.props.description
+	          ),
+	          _react2.default.createElement(
+	            'a',
+	            { href: this.props.urls[0].url, target: '_blank' },
+	            'More Details'
+	          )
+	        ) : ''
+	      );
+	    }
+	  }]);
+
+	  return Character;
+	}(_react2.default.Component);
+
+	module.exports = Character;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _api = __webpack_require__(168);
 
 	var _api2 = _interopRequireDefault(_api);
+
+	var _content = __webpack_require__(169);
+
+	var _content2 = _interopRequireDefault(_content);
+
+	var _character = __webpack_require__(170);
+
+	var _character2 = _interopRequireDefault(_character);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

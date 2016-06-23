@@ -26,11 +26,13 @@ li {
       -ms-flex-align: center;
           align-items: center;
   padding: 0.5rem;
-  border: 1px solid white;
+  border: 2px solid white;
   margin: 0.5rem; }
   li:hover {
-    opacity: 0.8;
     border-color: red; }
 
 img {
   width: 100px; }
+
+.character-modal {
+  color: black; }

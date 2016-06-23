@@ -1,5 +1,7 @@
 var React = require('react');
 import Api from './api.jsx';
+import Content from './content.jsx';
+import Character from './character.jsx';
 
 
 var styles = {
@@ -61,7 +63,6 @@ module.exports = React.createClass({
       React.DOM.div({ className: this.props.overlayClassName, style: this.unstyled ? null : this.props.overlayStyle, onClick: this.props.dismiss},
         React.DOM.div({ className: this.props.modalClassName, style: this.unstyled ? null : this.props.modalStyle, onClick: this.doNotPropogate},
           this.props.children
-          
         )
       )
     )

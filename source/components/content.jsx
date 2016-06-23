@@ -1,37 +1,21 @@
 import React, { PropTypes } from 'react';
-import Modal from './modal.jsx';
 
 import Api from './api.jsx';
+import Character from './character.jsx';
 
 class Content extends React.Component{
-  constructor() {
-    super();
-      this.state = {
-        showModal: ''
-      };
-    this.toggleModal = this.toggleModal.bind(this);
-  }
-
-  toggleModal() {
-  this.setState({showModal: !this.state.showModal})
-}
 
   render() {
+    const mapMarvelData = this.props.marvelData.map((el)=>{
+      return (
+        <Character key={el.id} name={el.name} thumbnail={el.thumbnail} description={el.description} urls={el.urls}></Character>
+      )
+    });
     return (
-      <div>
       <ul>
-        {this.props.marvelData.map((el, i)=>{
-            return  <li key={i} >
-              <a onClick={this.toggleModal}>
-              <img src={`${el.thumbnail.path}.${el.thumbnail.extension}`}  />
-              {el.name}
-              </a>
-            </li>;
-        })}
+        {mapMarvelData}
       </ul>
-      {this.state.showModal ? <Modal dismiss={this.toggleModal} /> : ''}
 
-    </div>
     );
   }
 

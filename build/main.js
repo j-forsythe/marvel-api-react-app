@@ -20255,6 +20255,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _modal = __webpack_require__(170);
+
+	var _modal2 = _interopRequireDefault(_modal);
+
 	var _api = __webpack_require__(168);
 
 	var _api2 = _interopRequireDefault(_api);
@@ -20273,12 +20277,25 @@
 	  function Content() {
 	    _classCallCheck(this, Content);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Content).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Content).call(this));
+
+	    _this.state = {
+	      showModal: ''
+	    };
+	    _this.toggleModal = _this.toggleModal.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(Content, [{
+	    key: 'toggleModal',
+	    value: function toggleModal() {
+	      this.setState({ showModal: !this.state.showModal });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -20289,11 +20306,16 @@
 	            return _react2.default.createElement(
 	              'li',
 	              { key: i },
-	              _react2.default.createElement('img', { src: el.thumbnail.path + '.' + el.thumbnail.extension }),
-	              el.name
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: _this2.toggleModal },
+	                _react2.default.createElement('img', { src: el.thumbnail.path + '.' + el.thumbnail.extension }),
+	                el.name
+	              )
 	            );
 	          })
-	        )
+	        ),
+	        this.state.showModal ? _react2.default.createElement(_modal2.default, { dismiss: this.toggleModal }) : ''
 	      );
 	    }
 	  }]);
@@ -20302,6 +20324,82 @@
 	}(_react2.default.Component);
 
 	module.exports = Content;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _api = __webpack_require__(168);
+
+	var _api2 = _interopRequireDefault(_api);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var React = __webpack_require__(1);
+
+
+	var styles = {
+	  modal: {
+	    position: 'absolute',
+	    top: '25%',
+	    left: '50%',
+	    width: 300,
+	    background: 'white',
+	    padding: 50,
+	    marginLeft: -200
+	  },
+	  overlay: {
+	    position: 'fixed',
+	    width: '100%',
+	    height: '100%',
+	    top: 0,
+	    left: 0,
+	    background: 'rgba(0,0,0,.5)'
+	  }
+	};
+
+	module.exports = React.createClass({
+	  displayName: 'exports',
+
+	  propTypes: {
+	    dismiss: React.PropTypes.func,
+	    unstyled: React.PropTypes.bool
+	  },
+
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      overlayStyle: styles.overlay,
+	      overlayClassName: null,
+	      modalStyle: styles.modal,
+	      modalClassName: null,
+	      unstyled: false
+	    };
+	  },
+
+	  componentWillMount: function componentWillMount() {
+	    document.addEventListener('keydown', this.keyPress);
+	  },
+
+	  componentWillUnmount: function componentWillUnmount() {
+	    document.removeEventListener('keydown', this.keyPress);
+	  },
+
+	  keyPress: function keyPress(e) {
+	    if (e.keyCode === 27) {
+	      this.props.dismiss();
+	    }
+	  },
+
+	  doNotPropogate: function doNotPropogate(e) {
+	    e.stopPropagation();
+	  },
+
+	  render: function render() {
+	    return React.DOM.div({ className: this.props.overlayClassName, style: this.unstyled ? null : this.props.overlayStyle, onClick: this.props.dismiss }, React.DOM.div({ className: this.props.modalClassName, style: this.unstyled ? null : this.props.modalStyle, onClick: this.doNotPropogate }, this.props.children));
+	  }
+	});
 
 /***/ }
 /******/ ]);

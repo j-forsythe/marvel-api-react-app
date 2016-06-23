@@ -20200,7 +20200,7 @@
 	    key: 'apiCall',
 	    value: function apiCall(event) {
 	      event.preventDefault();
-	      var marvelUrlBase = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=';
+	      var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=50';
 	      var fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
@@ -20391,7 +20391,7 @@
 	                'More Details'
 	              )
 	            ),
-	            _react2.default.createElement(
+	            this.props.urls[1] ? _react2.default.createElement(
 	              'li',
 	              null,
 	              _react2.default.createElement(
@@ -20399,8 +20399,8 @@
 	                { href: this.props.urls[1].url, target: '_blank' },
 	                'Wiki Page'
 	              )
-	            ),
-	            _react2.default.createElement(
+	            ) : "",
+	            this.props.urls[2] ? _react2.default.createElement(
 	              'li',
 	              null,
 	              _react2.default.createElement(
@@ -20408,7 +20408,7 @@
 	                { href: this.props.urls[2].url, target: '_blank' },
 	                'Comics'
 	              )
-	            )
+	            ) : ""
 	          )
 	        ) : ''
 	      );

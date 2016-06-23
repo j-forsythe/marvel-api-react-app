@@ -38,3 +38,6 @@ img {
 
 .character-modal {
   color: black; }
+
+.char-description {
+  font-style: italic; }

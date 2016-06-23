@@ -16,7 +16,7 @@ export default class Api extends React.Component {
 
   apiCall(event) {
     event.preventDefault();
-    var marvelUrlBase = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=';
+    var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
     var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=50';
     let fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 

@@ -29,11 +29,13 @@ class Character extends React.Component{
             <p>{this.props.name}</p>
             <img src={`${this.props.thumbnail.path}.${this.props.thumbnail.extension}`}  alt={`${this.props.name} Image`}/>
             <p>{!this.props.description ? "no description" : this.props.description}</p>
+
             <ul>
-              <li><a href={this.props.urls[0].url} target="_blank">More Details</a></li>
-              <li><a href={this.props.urls[1].url} target="_blank">Wiki Page</a></li>
-              <li><a href={this.props.urls[2].url} target="_blank">Comics</a></li>
+            <li><a href={this.props.urls[0].url} target="_blank">More Details</a></li>
+            {this.props.urls[1] ?  <li><a href={this.props.urls[1].url} target="_blank">Wiki Page</a></li> : "" }
+            {this.props.urls[2] ?  <li><a href={this.props.urls[2].url} target="_blank">Comics</a></li> : "" }
             </ul>
+
           </Modal>
           : ''}
 

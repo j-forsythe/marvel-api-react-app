@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import Content from './content.jsx';
 
-// var marvelUrl = 'http://gateway.marvel.com/v1/public/characters?ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20'
-
 export default class Api extends React.Component {
 
   constructor(props) {
@@ -16,9 +14,10 @@ export default class Api extends React.Component {
 
   }
 
-  apiCall() {
+  apiCall(event) {
+    event.preventDefault();
     var marvelUrlBase = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=';
-    var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20';
+    var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=50';
     let fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
     this.serverRequest = $.get(fullURL,
@@ -39,11 +38,14 @@ export default class Api extends React.Component {
     render() {
       return (
         <div>
-          <input
-            type="text"
-            ref="name"
-            />
-          <input type="submit" onClick={this.apiCall} />
+          <form onSubmit={this.apiCall}>
+            <input
+              type="text"
+              ref="name"
+              placeholder="Search for a character"
+              />
+            <input type="submit"  />
+          </form>
           <Content marvelData={this.state.marvelData} />
         </div>
       )

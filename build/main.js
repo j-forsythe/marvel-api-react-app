@@ -20178,8 +20178,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// var marvelUrl = 'http://gateway.marvel.com/v1/public/characters?ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20'
-
 	var Api = function (_React$Component) {
 	  _inherits(Api, _React$Component);
 
@@ -20200,9 +20198,10 @@
 
 	  _createClass(Api, [{
 	    key: 'apiCall',
-	    value: function apiCall() {
+	    value: function apiCall(event) {
+	      event.preventDefault();
 	      var marvelUrlBase = 'http://gateway.marvel.com/v1/public/characters?nameStartsWith=';
-	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20';
+	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=50';
 	      var fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
 	      this.serverRequest = $.get(fullURL, function (response) {
@@ -20225,11 +20224,16 @@
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement('input', {
-	          type: 'text',
-	          ref: 'name'
-	        }),
-	        _react2.default.createElement('input', { type: 'submit', onClick: this.apiCall }),
+	        _react2.default.createElement(
+	          'form',
+	          { onSubmit: this.apiCall },
+	          _react2.default.createElement('input', {
+	            type: 'text',
+	            ref: 'name',
+	            placeholder: 'Search for a character'
+	          }),
+	          _react2.default.createElement('input', { type: 'submit' })
+	        ),
 	        _react2.default.createElement(_content2.default, { marvelData: this.state.marvelData })
 	      );
 	    }
@@ -20359,7 +20363,7 @@
 	          null,
 	          this.props.name
 	        ),
-	        _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension }),
+	        _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension, alt: this.props.name + ' Image' }),
 	        this.state.showModal ? _react2.default.createElement(
 	          _modal2.default,
 	          { dismiss: this.toggleModal,
@@ -20369,16 +20373,42 @@
 	            null,
 	            this.props.name
 	          ),
-	          _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension }),
+	          _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension, alt: this.props.name + ' Image' }),
 	          _react2.default.createElement(
 	            'p',
 	            null,
 	            !this.props.description ? "no description" : this.props.description
 	          ),
 	          _react2.default.createElement(
-	            'a',
-	            { href: this.props.urls[0].url, target: '_blank' },
-	            'More Details'
+	            'ul',
+	            null,
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: this.props.urls[0].url, target: '_blank' },
+	                'More Details'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: this.props.urls[1].url, target: '_blank' },
+	                'Wiki Page'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                'a',
+	                { href: this.props.urls[2].url, target: '_blank' },
+	                'Comics'
+	              )
+	            )
 	          )
 	        ) : ''
 	      );

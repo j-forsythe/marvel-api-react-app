@@ -189,7 +189,7 @@ img {
 /* Variables */
 /* Mixins */
 .form-wrapper {
-  height: 100vh;
+  height: 100%;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;

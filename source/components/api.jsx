@@ -17,22 +17,30 @@ export default class Api extends React.Component {
   apiCall(event) {
     event.preventDefault();
     var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
-    var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20';
-    let fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
+    var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=25';
+    let $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
-    this.serverRequest = $.get(fullURL,
-      function (response) {
-        console.log(response);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', $fullURL);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      let apiData = JSON.parse(xhr.responseText);
+
+      if (xhr.status === 200) {
         this.setState({
-          marvelData: response.data.results,
-        });
-      }.bind(this));
+             marvelData: apiData.data.results,
+           });
+        if (apiData.data.total === 0) {
+          alert('Character not found. Try again!');
+        }
+      }
+      else {
+        alert('Please enter a valid name');
+      }
+    }.bind(this);
+    xhr.send();
 
       this.refs.name.value = '';
-    }
-
-    componentWillUnmount() {
-      this.serverRequest.abort();
     }
 
     render() {

@@ -1,0 +1,22 @@
+.character-modal {
+  color: black;
+}
+
+.char-description {
+  font-style: italic;
+}
+
+.char-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.char-links {
+  padding: 0;
+  list-style: none;
+  a {
+    &:hover {
+      color: red;
+    }
+  }
+}

@@ -20201,7 +20201,7 @@
 	    value: function apiCall(event) {
 	      event.preventDefault();
 	      var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
-	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=50';
+	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=20';
 	      var fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
 	      this.serverRequest = $.get(fullURL, function (response) {
@@ -20223,16 +20223,17 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'form-wrapper' },
 	        _react2.default.createElement(
 	          'form',
-	          { onSubmit: this.apiCall },
+	          { onSubmit: this.apiCall, className: 'user-input-form' },
 	          _react2.default.createElement('input', {
 	            type: 'text',
 	            ref: 'name',
-	            placeholder: 'Search for a character'
+	            placeholder: 'Search by name or letter',
+	            className: 'search-input'
 	          }),
-	          _react2.default.createElement('input', { type: 'submit' })
+	          _react2.default.createElement('input', { type: 'submit', className: 'search-submit' })
 	        ),
 	        _react2.default.createElement(_content2.default, { marvelData: this.state.marvelData })
 	      );
@@ -20292,7 +20293,7 @@
 	      });
 	      return _react2.default.createElement(
 	        'ul',
-	        null,
+	        { className: 'char-list' },
 	        mapMarvelData
 	      );
 	    }
@@ -20357,31 +20358,35 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'li',
-	        { onClick: this.toggleModal },
+	        { onClick: this.toggleModal, className: 'char-card' },
 	        _react2.default.createElement(
 	          'h2',
 	          null,
 	          this.props.name
 	        ),
-	        _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension, alt: this.props.name + ' Image' }),
+	        _react2.default.createElement('img', { src: this.props.thumbnail.path + '/standard_medium.' + this.props.thumbnail.extension, alt: this.props.name + ' Image' }),
 	        this.state.showModal ? _react2.default.createElement(
 	          _modal2.default,
 	          { dismiss: this.toggleModal,
 	            modalClassName: 'character-modal' },
 	          _react2.default.createElement(
-	            'p',
+	            'h3',
 	            null,
 	            this.props.name
 	          ),
-	          _react2.default.createElement('img', { src: this.props.thumbnail.path + '.' + this.props.thumbnail.extension, alt: this.props.name + ' Image' }),
 	          _react2.default.createElement(
-	            'p',
-	            null,
-	            !this.props.description ? "no description" : this.props.description
+	            'div',
+	            { className: 'char-info' },
+	            _react2.default.createElement('img', { src: this.props.thumbnail.path + '/portrait_fantastic.' + this.props.thumbnail.extension, alt: this.props.name + ' Image' }),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'char-description' },
+	              !this.props.description ? "no description" : this.props.description
+	            )
 	          ),
 	          _react2.default.createElement(
 	            'ul',
-	            null,
+	            { className: 'char-links' },
 	            _react2.default.createElement(
 	              'li',
 	              null,
@@ -20446,11 +20451,11 @@
 	var styles = {
 	  modal: {
 	    position: 'absolute',
-	    top: '25%',
+	    top: '5%',
 	    left: '50%',
 	    width: 300,
 	    background: 'white',
-	    padding: 50,
+	    padding: 10,
 	    marginLeft: -200
 	  },
 	  overlay: {

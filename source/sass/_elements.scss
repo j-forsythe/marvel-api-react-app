@@ -1,0 +1,32 @@
+body {
+  background: black;
+  color: white;
+  font-family: 'Marvel', sans-serif;
+  font-size: 16px;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+img {
+  height: 100%;
+}
+
+
+/* Variables */
+
+$colour_red: red;
+
+/* Mixins */
+@mixin tablet {
+  @media (min-width: 400px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 768px) {
+    @content;
+  }
+}

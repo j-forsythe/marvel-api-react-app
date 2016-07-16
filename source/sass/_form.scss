@@ -1,0 +1,39 @@
+.form-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-input-form {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-submit, .search-input {
+  border-radius: 0.9rem;
+  padding: 0.25rem 0.5rem;
+  outline: none;
+}
+
+.search-input {
+  width: 300px;
+  color: black;
+}
+
+.search-submit {
+  color: white;
+  background: $colour_red;
+  border-color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  @include tablet {
+    position: absolute;
+    right: 12%;
+  };
+  @include desktop {
+    right: 29%;
+  };
+}

@@ -7,11 +7,11 @@ import Character from './character.jsx';
 var styles = {
   modal: {
     position: 'absolute',
-    top: '25%',
+    top: '5%',
     left: '50%',
     width: 300,
     background: 'white',
-    padding: 50,
+    padding: 10,
     marginLeft: -200
   },
   overlay: {

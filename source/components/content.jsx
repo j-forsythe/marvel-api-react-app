@@ -12,7 +12,7 @@ class Content extends React.Component{
       )
     });
     return (
-      <ul>
+      <ul className="char-list">
         {mapMarvelData}
       </ul>
 

@@ -1,0 +1,18 @@
+.char-list {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  .char-card {
+    display: flex;
+    flex: 1 0 40%;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border: 2px solid white;
+    margin: 0.5rem;
+    &:hover {
+      border-color: red;
+    }
+  }
+}

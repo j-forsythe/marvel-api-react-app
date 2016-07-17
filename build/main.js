@@ -20188,11 +20188,10 @@
 
 	    _this.state = {
 	      marvelData: [],
-	      marvelUrl: ''
+	      marvelUrlEnd: ''
 	    };
 
 	    _this.apiCall = _this.apiCall.bind(_this);
-
 	    return _this;
 	  }
 
@@ -20200,10 +20199,19 @@
 	    key: 'apiCall',
 	    value: function apiCall(event) {
 	      event.preventDefault();
+	      var time = Date.now(),
+	          publicKey = 'edadab185618091e5b181eff999b775f',
+	          hashKey = '65807b0dbd26866524dcad83e9a4c231f1efc870';
+
+	      var sessionHash = time + hashKey + publicKey;
+
+	      var hash = md5(sessionHash);
+
+	      var marvelUrlEnd = '&ts=' + time + '&apikey=' + publicKey + '&hash=' + hash;
 	      var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
-	      var marvelUrlEnd = '&ts=1466385136&apikey=edadab185618091e5b181eff999b775f&hash=a0dfe2e78f04eee9b80bd742c9c643b2&limit=25';
 	      var $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
+	      //AJAX request
 	      var xhr = new XMLHttpRequest();
 	      xhr.open('GET', $fullURL);
 	      xhr.setRequestHeader('Content-Type', 'application/json');

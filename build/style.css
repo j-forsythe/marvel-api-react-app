@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,700);
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -188,6 +189,23 @@ img {
 
 /* Variables */
 /* Mixins */
+header {
+  text-align: center;
+  margin: 1rem  0; }
+  header h1 {
+    font-family: 'Oswald';
+    font-size: 4rem;
+    font-weight: bold;
+    background: red;
+    text-transform: uppercase;
+    border: 1px solid white;
+    width: 50%;
+    margin: 0  auto;
+    letter-spacing: -5px; }
+  header p {
+    letter-spacing: 2px;
+    font-size: 1.5rem; }
+
 .form-wrapper {
   height: 100%;
   display: -webkit-flex;
@@ -213,7 +231,6 @@ img {
           flex-wrap: wrap; }
 
 .search-submit, .search-input {
-  border-radius: 0.9rem;
   padding: 0.25rem 0.5rem;
   outline: none; }
 
@@ -224,16 +241,13 @@ img {
 .search-submit {
   color: white;
   background: red;
-  border-color: white;
+  border: none;
   text-transform: uppercase;
+  font-family: 'Oswald';
   font-weight: bold; }
-  @media (min-width: 400px) {
-    .search-submit {
-      position: absolute;
-      right: 12%; } }
-  @media (min-width: 768px) {
-    .search-submit {
-      right: 29%; } }
+  .search-submit:hover {
+    opacity: 0.5;
+    border: 1px  solid white; }
 
 .char-list {
   list-style-type: none;

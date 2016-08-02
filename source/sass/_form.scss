@@ -13,7 +13,7 @@
 }
 
 .search-submit, .search-input {
-  border-radius: 0.9rem;
+  // border-radius: 0.9rem;
   padding: 0.25rem 0.5rem;
   outline: none;
 }
@@ -26,14 +26,12 @@
 .search-submit {
   color: white;
   background: $colour_red;
-  border-color: white;
+  border: none;
   text-transform: uppercase;
+  font-family: 'Oswald';
   font-weight: bold;
-  @include tablet {
-    position: absolute;
-    right: 12%;
-  };
-  @include desktop {
-    right: 29%;
+  &:hover {
+    opacity: 0.5;
+    border: 1px  solid white;
   };
 }

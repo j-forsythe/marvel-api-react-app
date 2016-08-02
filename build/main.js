@@ -54,13 +54,13 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _api = __webpack_require__(168);
+	var _app = __webpack_require__(168);
 
-	var _api2 = _interopRequireDefault(_api);
+	var _app2 = _interopRequireDefault(_app);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_api2.default, null), document.querySelector('#app-node'));
+	_reactDom2.default.render(_react2.default.createElement(_app2.default, null), document.querySelector('#app-node'));
 
 /***/ },
 /* 1 */
@@ -20160,13 +20160,60 @@
 	  value: true
 	});
 
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _api = __webpack_require__(169);
+
+	var _api2 = _interopRequireDefault(_api);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var App = _react2.default.createClass({
+	  displayName: 'App',
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'section',
+	      null,
+	      _react2.default.createElement(
+	        'header',
+	        null,
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Marvel'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          'Character Search'
+	        )
+	      ),
+	      _react2.default.createElement(_api2.default, null)
+	    );
+	  }
+	});
+
+	exports.default = App;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _content = __webpack_require__(169);
+	var _content = __webpack_require__(170);
 
 	var _content2 = _interopRequireDefault(_content);
 
@@ -20187,8 +20234,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Api).call(this, props));
 
 	    _this.state = {
-	      marvelData: [],
-	      marvelUrlEnd: ''
+	      marvelData: []
 	    };
 
 	    _this.apiCall = _this.apiCall.bind(_this);
@@ -20264,7 +20310,7 @@
 	};
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20275,11 +20321,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _api = __webpack_require__(168);
+	var _api = __webpack_require__(169);
 
 	var _api2 = _interopRequireDefault(_api);
 
-	var _character = __webpack_require__(170);
+	var _character = __webpack_require__(171);
 
 	var _character2 = _interopRequireDefault(_character);
 
@@ -20320,7 +20366,7 @@
 	module.exports = Content;
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20331,11 +20377,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _content = __webpack_require__(169);
+	var _content = __webpack_require__(170);
 
 	var _content2 = _interopRequireDefault(_content);
 
-	var _modal = __webpack_require__(171);
+	var _modal = __webpack_require__(172);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
@@ -20441,20 +20487,20 @@
 	module.exports = Character;
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _api = __webpack_require__(168);
+	var _api = __webpack_require__(169);
 
 	var _api2 = _interopRequireDefault(_api);
 
-	var _content = __webpack_require__(169);
+	var _content = __webpack_require__(170);
 
 	var _content2 = _interopRequireDefault(_content);
 
-	var _character = __webpack_require__(170);
+	var _character = __webpack_require__(171);
 
 	var _character2 = _interopRequireDefault(_character);
 
@@ -20467,11 +20513,11 @@
 	  modal: {
 	    position: 'absolute',
 	    top: '5%',
-	    left: '50%',
-	    width: 300,
+	    left: '5%',
+	    width: '85%',
 	    background: 'white',
 	    padding: 10,
-	    marginLeft: -200
+	    marginLeft: 0
 	  },
 	  overlay: {
 	    position: 'fixed',

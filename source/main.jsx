@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Api from './components/api.jsx';
+import App from './components/app.jsx'
 
-ReactDOM.render(<Api />, document.querySelector('#app-node'));
+ReactDOM.render(<App />, document.querySelector('#app-node'));

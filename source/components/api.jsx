@@ -7,7 +7,6 @@ export default class Api extends React.Component {
     super(props);
     this.state = {
       marvelData: [],
-      marvelUrlEnd: ''
     };
 
     this.apiCall = this.apiCall.bind(this);

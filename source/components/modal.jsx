@@ -8,11 +8,11 @@ var styles = {
   modal: {
     position: 'absolute',
     top: '5%',
-    left: '50%',
-    width: 300,
+    left: '5%',
+    width: '85%',
     background: 'white',
     padding: 10,
-    marginLeft: -200
+    marginLeft: 0
   },
   overlay: {
     position: 'fixed',

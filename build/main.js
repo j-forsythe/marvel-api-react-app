@@ -20172,6 +20172,9 @@
 
 	var App = _react2.default.createClass({
 	  displayName: 'App',
+	  _handleScroll: function _handleScroll() {
+	    window.scrollTo(0, 0);
+	  },
 	  render: function render() {
 	    return _react2.default.createElement(
 	      'section',
@@ -20190,7 +20193,21 @@
 	          'Character Search'
 	        )
 	      ),
-	      _react2.default.createElement(_api2.default, null)
+	      _react2.default.createElement(_api2.default, null),
+	      _react2.default.createElement(
+	        'footer',
+	        null,
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this._handleScroll, className: 'scroll-top' },
+	          '⇪'
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { href: 'http://marvel.com', id: 'copy' },
+	          'Data provided by Marvel. © 2016 MARVEL'
+	        )
+	      )
 	    );
 	  }
 	});
@@ -20253,7 +20270,7 @@
 
 	      var hash = md5(sessionHash);
 
-	      var marvelUrlEnd = '&ts=' + time + '&apikey=' + publicKey + '&hash=' + hash;
+	      var marvelUrlEnd = '&limit=100&ts=' + time + '&apikey=' + publicKey + '&hash=' + hash;
 	      var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 	      var $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
@@ -20268,6 +20285,7 @@
 	          this.setState({
 	            marvelData: apiData.data.results
 	          });
+	          console.log(apiData);
 	          if (apiData.data.total === 0) {
 	            alert('Character not found. Try again!');
 	          }

@@ -22,7 +22,7 @@ export default class Api extends React.Component {
 
     var hash = md5(sessionHash);
 
-    let marvelUrlEnd = `&ts=${time}&apikey=${publicKey}&hash=${hash}`;
+    let marvelUrlEnd = `&limit=100&ts=${time}&apikey=${publicKey}&hash=${hash}`;
     var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
     let $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
@@ -37,6 +37,7 @@ export default class Api extends React.Component {
         this.setState({
              marvelData: apiData.data.results,
            });
+           console.log(apiData);
         if (apiData.data.total === 0) {
           alert('Character not found. Try again!');
         }

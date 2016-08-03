@@ -19,8 +19,12 @@
 }
 
 .search-input {
-  width: 300px;
+  width: 200px;
   color: black;
+  margin: 0 1rem;
+  &::placeholder {
+    color: black;
+  }
 }
 
 .search-submit {
@@ -34,4 +38,7 @@
     opacity: 0.5;
     border: 1px  solid white;
   };
+  &:focus {
+    box-shadow: inset 0 0 10px #000000;
+  }
 }

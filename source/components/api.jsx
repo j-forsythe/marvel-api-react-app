@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Content from './content.jsx';
+import ReactGA from 'react-ga';
 
 export default class Api extends React.Component {
 
@@ -61,13 +62,19 @@ export default class Api extends React.Component {
               placeholder="Search by name or letter"
               className="search-input"
               />
-            <input type="submit" className="search-submit" />
+            <input type="submit" className="search-submit" onClick={()=>{this._handleClick()}}/>
           </form>
           <Content marvelData={this.state.marvelData} />
         </div>
       )
     }
 
+    _handleClick() {
+      ReactGA.event({
+        category: 'User',
+        action: `Clicked submit, entered ${this.refs.name.value}`
+      })
+    }
 
   }
   Api.propTypes = { marvelData: React.PropTypes.arrayOf(React.PropTypes.string),

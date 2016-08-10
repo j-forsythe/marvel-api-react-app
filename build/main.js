@@ -98,7 +98,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _reactRouter.Router,
-	        { onUpdate: this._logPageView, history: _reactRouter.hashHistory },
+	        { onUpdate: this._logPageView, history: _reactRouter.browserHistory },
 	        _react2.default.createElement(_reactRouter.Route, { path: '/', component: _home2.default })
 	      );
 	    }
@@ -26692,7 +26692,8 @@
 	    value: function _handleClick() {
 	      _reactGa2.default.event({
 	        category: 'User',
-	        action: 'Clicked submit, entered ' + this.refs.name.value
+	        action: 'Submitted Query',
+	        label: 'entered ' + this.refs.name.value
 	      });
 	    }
 	  }]);

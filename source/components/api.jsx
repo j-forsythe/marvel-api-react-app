@@ -72,7 +72,8 @@ export default class Api extends React.Component {
     _handleClick() {
       ReactGA.event({
         category: 'User',
-        action: `Clicked submit, entered ${this.refs.name.value}`
+        action: 'Submitted Query',
+        label: `entered ${this.refs.name.value}`
       })
     }
 

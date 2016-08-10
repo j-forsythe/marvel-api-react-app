@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactGA from 'react-ga'
-import {Router, Route, hashHistory} from 'react-router'
+import {Router, Route, browserHistory} from 'react-router'
 
 import Home from './components/home.jsx'
 
@@ -14,7 +14,7 @@ export class App extends React.Component {
 
   render() {
     return (
-      <Router onUpdate={this._logPageView} history={hashHistory}>
+      <Router onUpdate={this._logPageView} history={browserHistory}>
         <Route path='/' component={Home} />
       </Router>
     );

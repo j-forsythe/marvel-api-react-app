@@ -260,6 +260,11 @@ header {
   .search-submit:focus {
     box-shadow: inset 0 0 10px #000000; }
 
+.ajax-loader {
+  width: 15%;
+  margin: 0 auto;
+  padding: 2rem 0; }
+
 .char-list {
   list-style-type: none;
   display: -webkit-flex;

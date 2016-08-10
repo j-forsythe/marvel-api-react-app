@@ -26617,7 +26617,8 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Api).call(this, props));
 
 	    _this.state = {
-	      marvelData: []
+	      marvelData: [],
+	      ajaxLoader: false
 	    };
 
 	    _this.apiCall = _this.apiCall.bind(_this);
@@ -26628,6 +26629,8 @@
 	    key: 'apiCall',
 	    value: function apiCall(event) {
 	      event.preventDefault();
+
+	      //Create MD5 hash
 	      var time = Date.now(),
 	          publicKey = 'edadab185618091e5b181eff999b775f',
 	          hashKey = '65807b0dbd26866524dcad83e9a4c231f1efc870';
@@ -26641,6 +26644,7 @@
 	      var $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
 	      //AJAX request
+	      this.setState({ ajaxLoader: true });
 	      var xhr = new XMLHttpRequest();
 	      xhr.open('GET', $fullURL);
 	      xhr.setRequestHeader('Content-Type', 'application/json');
@@ -26649,7 +26653,8 @@
 
 	        if (xhr.status === 200) {
 	          this.setState({
-	            marvelData: apiData.data.results
+	            marvelData: apiData.data.results,
+	            ajaxLoader: false
 	          });
 	          console.log(apiData);
 	          if (apiData.data.total === 0) {
@@ -26684,6 +26689,7 @@
 	              _this2._handleClick();
 	            } })
 	        ),
+	        !this.state.ajaxLoader ? '' : _react2.default.createElement('img', { src: './assets/ajax-loader.gif', alt: 'Ajax Loader Gif', className: 'ajax-loader' }),
 	        _react2.default.createElement(_content2.default, { marvelData: this.state.marvelData })
 	      );
 	    }

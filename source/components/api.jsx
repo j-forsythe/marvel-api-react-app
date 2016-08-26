@@ -26,7 +26,7 @@ export default class Api extends React.Component {
 
     var hash = md5(sessionHash);
 
-    let marvelUrlEnd = `&limit=100&ts=${time}&apikey=${publicKey}&hash=${hash}`;
+    let marvelUrlEnd = `&limit=75&ts=${time}&apikey=${publicKey}&hash=${hash}`;
     var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
     let $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
@@ -41,7 +41,6 @@ export default class Api extends React.Component {
       if (xhr.status === 200) {
         this.setState({
              marvelData: apiData.data.results,
-             ajaxLoader: false
            });
            console.log(apiData);
         if (apiData.data.total === 0) {
@@ -51,9 +50,9 @@ export default class Api extends React.Component {
       else {
         alert('Please enter a valid name');
       }
+      this.setState({ajaxLoader: false});
     }.bind(this);
     xhr.send();
-
       this.refs.name.value = '';
     }
 

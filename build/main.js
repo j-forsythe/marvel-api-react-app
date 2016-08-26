@@ -79,7 +79,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	_reactGa2.default.initialize('UA-81890211-1', {
+	_reactGa2.default.initialize('UA-81890211-2', {
 	  debug: false,
 	  titleCase: false
 	});
@@ -26639,7 +26639,7 @@
 
 	      var hash = md5(sessionHash);
 
-	      var marvelUrlEnd = '&limit=100&ts=' + time + '&apikey=' + publicKey + '&hash=' + hash;
+	      var marvelUrlEnd = '&limit=75&ts=' + time + '&apikey=' + publicKey + '&hash=' + hash;
 	      var marvelUrlBase = 'https://gateway.marvel.com/v1/public/characters?nameStartsWith=';
 	      var $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
@@ -26653,8 +26653,7 @@
 
 	        if (xhr.status === 200) {
 	          this.setState({
-	            marvelData: apiData.data.results,
-	            ajaxLoader: false
+	            marvelData: apiData.data.results
 	          });
 	          console.log(apiData);
 	          if (apiData.data.total === 0) {
@@ -26663,9 +26662,9 @@
 	        } else {
 	          alert('Please enter a valid name');
 	        }
+	        this.setState({ ajaxLoader: false });
 	      }.bind(this);
 	      xhr.send();
-
 	      this.refs.name.value = '';
 	    }
 	  }, {

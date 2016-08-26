@@ -5,7 +5,7 @@ import {Router, Route, browserHistory} from 'react-router'
 
 import Home from './components/home.jsx'
 
-ReactGA.initialize('UA-81890211-1', {
+ReactGA.initialize('UA-81890211-2', {
   debug: false,
   titleCase: false
 });

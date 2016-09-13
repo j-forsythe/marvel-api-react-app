@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  p {
+    text-align: center;
+  }
 }
 
 .user-input-form {
@@ -30,13 +34,13 @@
 .search-submit {
   color: white;
   background: $colour_red;
-  border: 1px solid black;
+  border: 1px outset black;
   text-transform: uppercase;
   font-family: 'Oswald';
   font-weight: bold;
   &:hover {
-    opacity: 0.5;
-    border: 1px  solid white;
+    opacity: 0.9;
+    border: 1px  inset white;
   };
   &:focus {
     box-shadow: inset 0 0 10px #000000;

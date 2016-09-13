@@ -250,6 +250,8 @@ header {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center; }
+  .form-wrapper p {
+    text-align: center; }
 
 .user-input-form {
   display: -webkit-flex;
@@ -284,13 +286,13 @@ header {
 .search-submit {
   color: white;
   background: red;
-  border: 1px solid black;
+  border: 1px outset black;
   text-transform: uppercase;
   font-family: 'Oswald';
   font-weight: bold; }
   .search-submit:hover {
-    opacity: 0.5;
-    border: 1px  solid white; }
+    opacity: 0.9;
+    border: 1px  inset white; }
   .search-submit:focus {
     box-shadow: inset 0 0 10px #000000; }
 
@@ -325,10 +327,10 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 0.5rem;
-  border: 2px solid rgba(76, 78, 77, 0.6);
+  border: 4px outset rgba(76, 78, 77, 0.6);
   margin: 0.5rem; }
   .char-card:hover {
-    border-color: red;
+    border: 4px inset red;
     box-shadow: inset 0 0 10px #000000; }
   @media (min-width: 400px) {
     .char-card {

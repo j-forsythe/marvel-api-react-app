@@ -8,7 +8,8 @@ export default class Api extends React.Component {
     super(props);
     this.state = {
       marvelData: [],
-      ajaxLoader: false
+      ajaxLoader: false,
+      errorMessage: false
     };
 
     this.apiCall = this.apiCall.bind(this);
@@ -31,7 +32,7 @@ export default class Api extends React.Component {
     let $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
     //AJAX request
-    this.setState({ajaxLoader: true})
+    this.setState({ajaxLoader: true, errorMessage: false})
     var xhr = new XMLHttpRequest();
     xhr.open('GET', $fullURL);
     xhr.setRequestHeader('Content-Type', 'application/json');
@@ -44,11 +45,11 @@ export default class Api extends React.Component {
            });
            console.log(apiData);
         if (apiData.data.total === 0) {
-          alert('Character not found. Try again!');
+          this.setState({errorMessage: true});
         }
       }
       else {
-        alert('Please enter a valid name');
+        this.setState({errorMessage: true});
       }
       this.setState({ajaxLoader: false});
     }.bind(this);
@@ -69,6 +70,7 @@ export default class Api extends React.Component {
             <input type="submit" className="search-submit" onClick={()=>{this._handleClick()}}/>
           </form>
           {!this.state.ajaxLoader ? '' : <img src='./assets/ajax-loader.gif' alt="Ajax Loader Gif" className="ajax-loader"/>}
+          {!this.state.errorMessage ? '' : <p>Character not found in the Marvel Universe. Try again</p>}
           <Content marvelData={this.state.marvelData} />
         </div>
       )

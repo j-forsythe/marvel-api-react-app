@@ -26618,7 +26618,8 @@
 
 	    _this.state = {
 	      marvelData: [],
-	      ajaxLoader: false
+	      ajaxLoader: false,
+	      errorMessage: false
 	    };
 
 	    _this.apiCall = _this.apiCall.bind(_this);
@@ -26644,7 +26645,7 @@
 	      var $fullURL = marvelUrlBase + this.refs.name.value + marvelUrlEnd;
 
 	      //AJAX request
-	      this.setState({ ajaxLoader: true });
+	      this.setState({ ajaxLoader: true, errorMessage: false });
 	      var xhr = new XMLHttpRequest();
 	      xhr.open('GET', $fullURL);
 	      xhr.setRequestHeader('Content-Type', 'application/json');
@@ -26657,10 +26658,10 @@
 	          });
 	          console.log(apiData);
 	          if (apiData.data.total === 0) {
-	            alert('Character not found. Try again!');
+	            this.setState({ errorMessage: true });
 	          }
 	        } else {
-	          alert('Please enter a valid name');
+	          this.setState({ errorMessage: true });
 	        }
 	        this.setState({ ajaxLoader: false });
 	      }.bind(this);
@@ -26689,6 +26690,11 @@
 	            } })
 	        ),
 	        !this.state.ajaxLoader ? '' : _react2.default.createElement('img', { src: './assets/ajax-loader.gif', alt: 'Ajax Loader Gif', className: 'ajax-loader' }),
+	        !this.state.errorMessage ? '' : _react2.default.createElement(
+	          'p',
+	          null,
+	          'Character not found in the Marvel Universe. Try again'
+	        ),
 	        _react2.default.createElement(_content2.default, { marvelData: this.state.marvelData })
 	      );
 	    }

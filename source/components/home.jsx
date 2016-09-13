@@ -14,7 +14,7 @@ export default class Home extends React.Component {
         <Api />
         <footer>
           <button onClick={this._handleScroll} className="scroll-top">&#8682;</button>
-          <a href="http://marvel.com" id="copy" target="_blank">Data provided by Marvel. © 2016 MARVEL</a>
+          <a href="http://marvel.com" id="copy" target="_blank">Data provided by Marvel. &copy; 2016 MARVEL</a>
           <a  href="https://github.com/j-forsythe/marvel-api-react-app"
               target="_blank"
               onClick={()=>{this._handleClick()}}>

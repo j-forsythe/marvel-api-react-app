@@ -13,10 +13,10 @@
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
-  border: 2px solid rgba(#4c4e4d, 0.6);
+  border: 4px outset rgba(#4c4e4d, 0.6);
   margin: 0.5rem;
   &:hover {
-    border-color: red;
+    border: 4px inset red;
     box-shadow: inset 0 0 10px #000000;
   }
   @include tablet {

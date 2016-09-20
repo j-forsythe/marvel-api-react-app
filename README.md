@@ -1,6 +1,6 @@
 #Marvel Comics Character Search
 
-Traverse the Marvel universe
+Traverse the Marvel universe by looking up your favourite character or discovering new ones!
 
 ##Summary
 
